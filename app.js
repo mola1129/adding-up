@@ -43,11 +43,16 @@ rl.on("close", () => {
   // 連想配列 => 配列に変換 [[key, value], [key, value], ...]
   // sortで比較関数を渡す
   const rankingArray = Array.from(prefectureDataMap).sort((pair1, pair2) => {
-    return pair2[1].change - pair1[1].change;
+    // return pair2[1].change - pair1[1].change;
+    return pair1[1].change - pair2[1].change; // 練習
   });
   // 読みやすく整形
-  const rankingStrings = rankingArray.map(([key, value]) => {
+  const rankingStrings = rankingArray.map(([key, value], index) => {
+    // 練習
     return (
+      index +
+      1 +
+      "位 " +
       key +
       ": " +
       value.popu10 +
